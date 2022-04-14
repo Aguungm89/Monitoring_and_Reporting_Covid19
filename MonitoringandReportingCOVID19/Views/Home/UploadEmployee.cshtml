@@ -1,0 +1,73 @@
+﻿
+@model MonitoringandReportingCOVID19.viewmodel.ViMoviewmodel
+
+@{
+    ViewBag.Title = "UploadEmployee";
+}
+
+<div class="content-wrapper">
+    
+
+    <section class="content">
+        <div class="row p-4">
+            <div class="col-lg-12">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="">
+                            <div class="form-row">
+                                <img src="~/Image/add emp icon.png" width="100" height="80" alt=""><h4 class="page-title"><strong>Upload<br />Employee</strong></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h6><strong>Upload Employee data via Excel</strong></h6>
+                <hr />
+                @using (Html.BeginForm("UploadExcelEMP", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return myFunction()" }))
+                {
+                    <div class=" container-fluid">
+                        <div class="form-group">
+                            <div class="control-label col-md-4">Download Upload Templates:</div>
+                            <div class="col-md-10">
+                                <a href="/Home/DownloadExcelUEMP/"><img src="~/Image/excelicon.png" width="50" height="50" title="Download Excel format" alt="excel" /></a>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="control-label col-md-4 pb-2 pt-2">Upload Employee Data:</div>
+                            <div class="col-md-10">
+                                <input type="file" id="FileUpload" name="FileUpload" class="" required oninvalid="this.setCustomValidity('Please choose Excel file')" oninput="this.setCustomValidity('')" />
+                            </div>
+                        </div>
+                        @if (Model.Temp_Employees.Count() > 0)
+                        {
+                            <div class="form-group">
+                                <div class="col-md-9 mt-3">
+                                    <input type="submit" value="Upload" disabled id="btnSubmit" class="btn btn-primary" /> Cannot upload because there is a process that has not been completed
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-9 mt-3">
+                                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("CheckUploadEMP")'">Check</button>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+
+                            <div class="form-group">
+                                <div class="col-md-9 mt-3">
+                                    <input type="submit" value="Upload" id="btnSubmit" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        }
+
+                        <div class="form-group">
+                            <label class="col-form-label col-md-12 text-red"><strong>@TempData["Error"]<br />@TempData["Error2"]</strong></label>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+</div>

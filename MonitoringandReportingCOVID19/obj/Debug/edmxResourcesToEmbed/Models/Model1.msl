@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MRC19ModelStoreContainer" CdmEntityContainer="MRC19Entities">
+    <EntitySetMapping Name="Temp_Employee">
+      <EntityTypeMapping TypeName="MRC19Model.Temp_Employee">
+        <MappingFragment StoreEntitySet="Temp_Employee">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Departement" ColumnName="Departement" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+          <ScalarProperty Name="Employee_Name" ColumnName="Employee_Name" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="MRC19Model.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Departement" ColumnName="Departement" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+          <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+          <ScalarProperty Name="Emp_ids" ColumnName="Emp_ids" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_ActiveCases">
+      <EntityTypeMapping TypeName="MRC19Model.V_ActiveCases">
+        <MappingFragment StoreEntitySet="V_ActiveCases">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Confirmation_Date" ColumnName="Confirmation_Date" />
+          <ScalarProperty Name="Departement" ColumnName="Departement" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+          <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+          <ScalarProperty Name="ConfirmID" ColumnName="ConfirmID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_DeathCases">
+      <EntityTypeMapping TypeName="MRC19Model.V_DeathCases">
+        <MappingFragment StoreEntitySet="V_DeathCases">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Death_Date" ColumnName="Death_Date" />
+          <ScalarProperty Name="Confirmation_Date" ColumnName="Confirmation_Date" />
+          <ScalarProperty Name="Departement" ColumnName="Departement" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+          <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+          <ScalarProperty Name="ConfirmID" ColumnName="ConfirmID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_RecoveryCases">
+      <EntityTypeMapping TypeName="MRC19Model.V_RecoveryCases">
+        <MappingFragment StoreEntitySet="V_RecoveryCases">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Recovery_Date" ColumnName="Recovery_Date" />
+          <ScalarProperty Name="Confirmation_Date" ColumnName="Confirmation_Date" />
+          <ScalarProperty Name="Departement" ColumnName="Departement" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+          <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+          <ScalarProperty Name="ConfirmID" ColumnName="ConfirmID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_ConfirmEMP">
+      <EntityTypeMapping TypeName="MRC19Model.V_ConfirmEMP">
+        <MappingFragment StoreEntitySet="V_ConfirmEMP">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Departement" ColumnName="Departement" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+          <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+          <ScalarProperty Name="Emp_ids" ColumnName="Emp_ids" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_CFgender">
+      <EntityTypeMapping TypeName="MRC19Model.V_CFgender">
+        <MappingFragment StoreEntitySet="V_CFgender">
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+          <ScalarProperty Name="ConfirmID" ColumnName="ConfirmID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_CMgender">
+      <EntityTypeMapping TypeName="MRC19Model.V_CMgender">
+        <MappingFragment StoreEntitySet="V_CMgender">
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+          <ScalarProperty Name="ConfirmID" ColumnName="ConfirmID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CovidConfirmCases">
+      <EntityTypeMapping TypeName="MRC19Model.CovidConfirmCas">
+        <MappingFragment StoreEntitySet="CovidConfirmCases">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Death_Date" ColumnName="Death_Date" />
+          <ScalarProperty Name="Recovery_Date" ColumnName="Recovery_Date" />
+          <ScalarProperty Name="Confirmation_Date" ColumnName="Confirmation_Date" />
+          <ScalarProperty Name="Departement" ColumnName="Departement" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+          <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+          <ScalarProperty Name="ConfirmID" ColumnName="ConfirmID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_BarChart">
+      <EntityTypeMapping TypeName="MRC19Model.V_BarChart">
+        <MappingFragment StoreEntitySet="V_BarChart">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Death_Date" ColumnName="Death_Date" />
+          <ScalarProperty Name="Recovery_Date" ColumnName="Recovery_Date" />
+          <ScalarProperty Name="Confirmation_Date" ColumnName="Confirmation_Date" />
+          <ScalarProperty Name="MoYe" ColumnName="MoYe" />
+          <ScalarProperty Name="DaMo" ColumnName="DaMo" />
+          <ScalarProperty Name="Departement" ColumnName="Departement" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+          <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+          <ScalarProperty Name="ConfirmID" ColumnName="ConfirmID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_EmpFemale">
+      <EntityTypeMapping TypeName="MRC19Model.V_EmpFemale">
+        <MappingFragment StoreEntitySet="V_EmpFemale">
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+          <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_EmpMale">
+      <EntityTypeMapping TypeName="MRC19Model.V_EmpMale">
+        <MappingFragment StoreEntitySet="V_EmpMale">
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+          <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_Uploadnew">
+      <EntityTypeMapping TypeName="MRC19Model.V_Uploadnew">
+        <MappingFragment StoreEntitySet="V_Uploadnew">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Departement" ColumnName="Departement" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+          <ScalarProperty Name="Employee_Name" ColumnName="Employee_Name" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_Uploadold">
+      <EntityTypeMapping TypeName="MRC19Model.V_Uploadold">
+        <MappingFragment StoreEntitySet="V_Uploadold">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Departement" ColumnName="Departement" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+          <ScalarProperty Name="Employee_Name" ColumnName="Employee_Name" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountUsers">
+      <EntityTypeMapping TypeName="MRC19Model.AccountUser">
+        <MappingFragment StoreEntitySet="AccountUser">
+          <ScalarProperty Name="User_type" ColumnName="User_type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_statuemp">
+      <EntityTypeMapping TypeName="MRC19Model.V_statuemp">
+        <MappingFragment StoreEntitySet="V_statuemp">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+          <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="MRC19Model.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="Department_Name" ColumnName="Department_Name" />
+          <ScalarProperty Name="DepartID" ColumnName="DepartID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee_location">
+      <EntityTypeMapping TypeName="MRC19Model.Employee_location">
+        <MappingFragment StoreEntitySet="Employee_location">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="titik_kordinat" ColumnName="titik_kordinat" />
+          <ScalarProperty Name="Current_position" ColumnName="Current_position" />
+          <ScalarProperty Name="Days_Isolation" ColumnName="Days_Isolation" />
+          <ScalarProperty Name="Date_AddLocation" ColumnName="Date_AddLocation" />
+          <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+          <ScalarProperty Name="ID_EL" ColumnName="ID_EL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

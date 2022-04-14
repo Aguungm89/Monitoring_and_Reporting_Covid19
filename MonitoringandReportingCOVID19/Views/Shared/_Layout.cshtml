@@ -1,0 +1,334 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link href="~/Content/css/site.css" rel="stylesheet" />
+    <link href="~/Content/css/Style.css" rel="stylesheet" />
+    <link href="~/Content/css/adminlte.css" rel="stylesheet" />
+    <link href="~/Content/css/adminlte.min.css" rel="stylesheet" />
+
+    <link href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <link href="~/Content/css/buttons.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+
+    <link href="~/Content/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+
+</head>
+<body>
+
+
+        <!-- Navbar -->
+        <nav class="fixed-top main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa fa-bars"> </i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="@Url.Action("Index", "Home")" class="nav-link">Home</a>
+                </li>
+                <li class="menu-title" style="margin-left:1000px;"><a href="@Url.Action("Logout", "Home")" class="btn btn-danger">Logout</a></li>
+            </ul>
+
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-light-primary elevation-4">
+            <!-- Brand Logo -->
+            <br />
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="image">
+                    <center><img class="animation__shake " src="~/Content/Image/iconcovid.png" height="105" width="140"></center>
+                </div>
+
+                <div class="user-panel   mb-3 d-flex">
+                    <a href="@Url.Action("Index", "Home")" class="brand-link">
+                        <center><span class="brand-text font-weight-light">Monitoring and Reporting <br />Covid-19</span></center>
+                    </a>
+                </div>
+
+                @if ((string)Session["User_type"] == "Admin")
+                {
+
+                    <!-- Sidebar Menu -->
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+                            <li class="nav-item menu-open">
+                                <a href="@Url.Action("Index", "Home")" class="nav-link">
+                                    <i class="nav-icon fa fa-television"></i>
+                                    <p>
+                                        Dashboard
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+                            <li class=" nav nav-item menu-open">
+                                <a href="@Url.Action("UploadEmployee", "Home")" class="nav-link ">
+                                    <i class="nav-icon fa fa-cloud-upload-alt"></i>
+                                    <p>
+                                        Upload Employee
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </nav>
+
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+                            <li class=" nav nav-item menu-open">
+                                <a href="@Url.Action("AddEmployee", "Home")" class="nav-link ">
+                                    <i class="nav-icon fa fa-user-plus"></i>
+                                    <p>
+                                        Add Employee
+                                    </p>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </nav>
+
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+                            <li class="nav-item menu-open">
+                                <a href="@Url.Action("ConfirmCases", "Home")" class="nav-link ">
+                                    <i class="nav-icon fa fa-check"></i>
+                                    <p>
+                                        Confirm Cases
+                                    </p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </nav>
+
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+                            <li class="nav-item menu-open">
+                                <a href="@Url.Action("SetDepartment", "Home")" class="nav-link ">
+                                    <i class="nav-icon fa fa-gear"></i>
+                                    <p>
+                                        Department Setting
+                                    </p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </nav>
+
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+                            <li class="nav-item menu-open">
+                                <a href="@Url.Action("LocationEmployee", "Home")" class="nav-link ">
+                                    <i class="nav-icon fa fa-globe"></i>
+                                    <p>
+                                        Employee Location
+                                    </p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                    <!-- /.sidebar-menu -->
+                }
+
+                @if ((string)Session["User_type"] == "Employee")
+                {
+                    if ((string)Session["Status"] == "Death" || (string)Session["Status"] == "Active")
+                    {
+                        <nav class="mt-2">
+                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                <!-- Add icons to the links using the .nav-icon class
+                    with font-awesome or any other icon font library -->
+                                <li class="nav-item menu-open">
+                                    <a href="@Url.Action("AddLocation", "Home")" class="nav-link ">
+                                        <i class="nav-icon fa fa-edit"></i>
+                                        <p>
+                                            Add Last Location
+                                        </p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </nav>
+                    }
+                }
+
+
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+
+
+        <div class="wrapper">
+            <main role="main" class="pb-4">
+                @RenderBody()
+
+
+            </main>
+        </div>
+
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2021 <a href="#">Mohammad Agung Mahyuddin</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+
+            </div>
+        </footer>
+
+        <script src="~/Content/js/jquery.min.js"></script>
+        <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+        <script src="~/Content/js/demo.js"></script>
+        <script src="~/Content/js/dashboard.js"></script>
+        <script src="~/Content/js/adminlte.min.js"></script>
+
+        <script src="~/Content/js/Chart.min.js"></script>
+
+        <script src="~/Content/js/admjs/jquery-3.5.1.js"></script>
+
+        <script src="~/Content/Plugin/buttons.bootstrap4.min.js"></script>
+        <script src="~/Content/Plugin/buttons.colVis.min.js"></script>
+        <script src="~/Content/Plugin/buttons.html5.min.js"></script>
+        <script src="~/Content/Plugin/buttons.print.min.js"></script>
+        <script src="~/Content/Plugin/dataTables.bootstrap4.min.js"></script>
+        <script src="~/Content/Plugin/dataTables.buttons.min.js"></script>
+        <script src="~/Content/Plugin/dataTables.responsive.min.js"></script>
+        <script src="~/Content/Plugin/jquery.dataTables.min.js"></script>
+        <script src="~/Content/Plugin/jszip.min.js"></script>
+        <script src="~/Content/Plugin/pdfmake.min.js"></script>
+        <script src="~/Content/Plugin/responsive.bootstrap4.min.js"></script>
+        <script src="~/Content/Plugin/vfs_fonts.js"></script>
+
+        <script src="~/Content/js/jquery-ui.min.js"></script>
+        <script src="~/Content/js/jquery.overlayScrollbars.min.js"></script>
+        <script src="~/Content/js/tempusdominus-bootstrap-4.min.js"></script>
+
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+        <script src="~/Content/js/admjs/moment.min.js"></script>
+        <script src="~/Content/js/admjs/daterangepicker.js"></script>
+
+        <!-- TABLE  -->
+        <script>
+            $(document).ready(function () {
+                $('#example').DataTable();
+                $('#example1').DataTable();
+            });
+
+        </script>
+
+        <!-- PIECHART GENDER  -->
+
+        <script>
+            $(document).ready(function () {
+                $.getJSON("/Home/PieChartGender", function (data) {
+                    var json = data;
+                    var jsondata = [];
+                    for (var i in json) {
+                        // var serie = new Array(json[i].Projects, json[i].Bugs);
+                        jsondata.push([json[i].Gender, json[i].count]);
+                    }
+
+
+                    Highcharts.setOptions({
+                        colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
+                            return {
+                                radialGradient: {
+                                    cx: 0.5,
+                                    cy: 0.3,
+                                    r: 0.7
+                                },
+                                stops: [
+                                    [0, color],
+                                    [1, Highcharts.color(color).brighten(-0.3).get('rgb')] // darken
+                                ]
+                            };
+                        })
+                    });
+
+                    // Build the chart
+                    Highcharts.chart('GenderChart', {
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: null,
+                            plotShadow: false,
+                            type: 'pie'
+                        },
+                        title: {
+                            text: 'Covid-19 Cases by Gender'
+                        },
+
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        },
+                        accessibility: {
+                            point: {
+                                valueSuffix: '%'
+                            }
+                        },
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                    connectorColor: 'silver'
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Gender',
+                            data: jsondata
+
+                        }]
+                    });
+                });
+            });
+
+        </script>
+
+
+
+
+
+
+        @RenderSection("scripts", required: false)
+    
+    </body>
+</html>

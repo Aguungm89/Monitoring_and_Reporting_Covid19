@@ -1,0 +1,140 @@
+﻿
+@model MonitoringandReportingCOVID19.viewmodel.ViMoviewmodel
+
+@{
+    ViewBag.Title = "AddEmployee";
+}
+
+<div class="content-wrapper">
+    <section class="content">
+
+        <div class="container-fluid ">
+            <div class="row mt-4">
+                <div class="">
+                    <div class="form-row">
+                        <img src="~/Image/add emp icon.png" width="100" height="80" alt=""><h4 class="page-title"><strong>Add<br />Employee</strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="card card-primary mt-3">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa fa-user-plus"> </i> Add Employee</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form action="" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>EMPLOYEE ID</label>
+                                        <input name="Emp_id" type="text" class="form-control" placeholder="Enter Employee Id">
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>EMPLOYEE NAME</label>
+                                        <input name="Emp_name" type="text" class="form-control" placeholder="Enter Employee Name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>GENDER</label>
+                                        <select class="form-control" name="Gender">
+                                            <option value="">--Select Gender--</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>DATE OF BIRTH</label>
+                                        <input name="DOB" type="date" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>DEPARTMENT</label>
+                                        <select class="form-control" name="Department">
+                                            <option value="">--Select Department--</option>
+                                            @foreach (var item in Model.Departments)
+                                            {
+                                                <option value="@item.Department_Name">@item.Department_Name</option>
+                                            }
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>ADDRESS</label>
+                                        <textarea name="Address" class="form-control" rows="3" placeholder="Enter Address ..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus"> </i> Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6 mt-3">
+                <!-- small box -->
+                <div class="info-box">
+                    <span class="info-box-icon bg-primary"><i class="fa fa-user"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Total Employee</span>
+                        <span class="info-box-number">@ViewBag.Employee</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <div class="info-box">
+                    <span class="info-box-icon bg-primary"><i class="fa fa-mars"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Male Employee</span>
+                        <span class="info-box-number">@ViewBag.EmployeeM</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+
+                <div class="info-box">
+                    <span class="info-box-icon bg-primary"><i class="fa fa-venus"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Female Employee</span>
+                        <span class="info-box-number">@ViewBag.EmployeeF</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-form-label col-md-12 text-red"><strong>@TempData["Error"]</strong></label>
+        </div>
+    </section>
+
+
+</div>
+

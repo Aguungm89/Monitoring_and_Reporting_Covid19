@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MRC19Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MRC19Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Temp_Employee" EntityType="MRC19Model.Temp_Employee" />
+    <EntitySet Name="Employees" EntityType="MRC19Model.Employee" />
+    <EntitySet Name="V_ActiveCases" EntityType="MRC19Model.V_ActiveCases" />
+    <EntitySet Name="V_DeathCases" EntityType="MRC19Model.V_DeathCases" />
+    <EntitySet Name="V_RecoveryCases" EntityType="MRC19Model.V_RecoveryCases" />
+    <EntitySet Name="V_ConfirmEMP" EntityType="MRC19Model.V_ConfirmEMP" />
+    <EntitySet Name="V_CFgender" EntityType="MRC19Model.V_CFgender" />
+    <EntitySet Name="V_CMgender" EntityType="MRC19Model.V_CMgender" />
+    <EntitySet Name="CovidConfirmCases" EntityType="MRC19Model.CovidConfirmCas" />
+    <EntitySet Name="V_BarChart" EntityType="MRC19Model.V_BarChart" />
+    <EntitySet Name="V_EmpFemale" EntityType="MRC19Model.V_EmpFemale" />
+    <EntitySet Name="V_EmpMale" EntityType="MRC19Model.V_EmpMale" />
+    <EntitySet Name="V_Uploadnew" EntityType="MRC19Model.V_Uploadnew" />
+    <EntitySet Name="V_Uploadold" EntityType="MRC19Model.V_Uploadold" />
+    <EntitySet Name="AccountUsers" EntityType="MRC19Model.AccountUser" />
+    <EntitySet Name="V_statuemp" EntityType="MRC19Model.V_statuemp" />
+    <EntitySet Name="Departments" EntityType="MRC19Model.Department" />
+    <EntitySet Name="Employee_location" EntityType="MRC19Model.Employee_location" />
+  </EntityContainer>
+  <EntityType Name="Temp_Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Employee_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DateofBirth" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Emp_id" />
+    </Key>
+    <Property Name="Emp_ids" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_ActiveCases">
+    <Key>
+      <PropertyRef Name="ConfirmID" />
+    </Key>
+    <Property Name="ConfirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Confirmation_Date" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_DeathCases">
+    <Key>
+      <PropertyRef Name="ConfirmID" />
+    </Key>
+    <Property Name="ConfirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Confirmation_Date" Type="DateTime" Precision="3" />
+    <Property Name="Death_Date" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_RecoveryCases">
+    <Key>
+      <PropertyRef Name="ConfirmID" />
+    </Key>
+    <Property Name="ConfirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Confirmation_Date" Type="DateTime" Precision="3" />
+    <Property Name="Recovery_Date" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_ConfirmEMP">
+    <Key>
+      <PropertyRef Name="Emp_ids" />
+      <PropertyRef Name="Emp_id" />
+    </Key>
+    <Property Name="Emp_ids" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_CFgender">
+    <Key>
+      <PropertyRef Name="ConfirmID" />
+    </Key>
+    <Property Name="ConfirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_CMgender">
+    <Key>
+      <PropertyRef Name="ConfirmID" />
+    </Key>
+    <Property Name="ConfirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CovidConfirmCas">
+    <Key>
+      <PropertyRef Name="ConfirmID" />
+    </Key>
+    <Property Name="ConfirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Confirmation_Date" Type="DateTime" Precision="0" />
+    <Property Name="Recovery_Date" Type="DateTime" Precision="0" />
+    <Property Name="Death_Date" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_BarChart">
+    <Key>
+      <PropertyRef Name="ConfirmID" />
+    </Key>
+    <Property Name="ConfirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DaMo" Type="String" MaxLength="61" FixedLength="false" Unicode="true" />
+    <Property Name="MoYe" Type="String" MaxLength="61" FixedLength="false" Unicode="true" />
+    <Property Name="Confirmation_Date" Type="DateTime" Precision="0" />
+    <Property Name="Recovery_Date" Type="DateTime" Precision="0" />
+    <Property Name="Death_Date" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_EmpFemale">
+    <Key>
+      <PropertyRef Name="Emp_id" />
+    </Key>
+    <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_EmpMale">
+    <Key>
+      <PropertyRef Name="Emp_id" />
+    </Key>
+    <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_Uploadnew">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Employee_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DateofBirth" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_Uploadold">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Employee_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DateofBirth" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AccountUser">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="User_type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_statuemp">
+    <Key>
+      <PropertyRef Name="Emp_id" />
+    </Key>
+    <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartID" />
+    </Key>
+    <Property Name="DepartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Department_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Employee_location">
+    <Key>
+      <PropertyRef Name="ID_EL" />
+    </Key>
+    <Property Name="ID_EL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Date_AddLocation" Type="DateTime" Precision="0" />
+    <Property Name="Days_Isolation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Current_position" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="titik_kordinat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

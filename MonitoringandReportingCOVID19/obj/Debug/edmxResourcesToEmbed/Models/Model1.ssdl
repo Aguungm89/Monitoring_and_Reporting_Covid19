@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MRC19Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AccountUser">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="255" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="User_type" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="CovidConfirmCases">
+    <Key>
+      <PropertyRef Name="ConfirmID" />
+    </Key>
+    <Property Name="ConfirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emp_id" Type="varchar" MaxLength="255" />
+    <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+    <Property Name="Gender" Type="varchar" MaxLength="255" />
+    <Property Name="Departement" Type="varchar" MaxLength="255" />
+    <Property Name="Confirmation_Date" Type="date" />
+    <Property Name="Recovery_Date" Type="date" />
+    <Property Name="Death_Date" Type="date" />
+    <Property Name="Status" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartID" />
+    </Key>
+    <Property Name="DepartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Department_Name" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Emp_id" />
+    </Key>
+    <Property Name="Emp_ids" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emp_id" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="Gender" Type="varchar" MaxLength="255" />
+    <Property Name="Departement" Type="varchar" MaxLength="255" />
+    <Property Name="Address" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Employee_location">
+    <Key>
+      <PropertyRef Name="ID_EL" />
+    </Key>
+    <Property Name="ID_EL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emp_id" Type="varchar" MaxLength="255" />
+    <Property Name="Date_AddLocation" Type="date" />
+    <Property Name="Days_Isolation" Type="varchar" MaxLength="255" />
+    <Property Name="Current_position" Type="varchar" MaxLength="255" />
+    <Property Name="titik_kordinat" Type="varchar" MaxLength="255" />
+    <Property Name="Address" Type="varchar" MaxLength="255" />
+    <Property Name="Description" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Temp_Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Employee_Name" Type="varchar" MaxLength="255" />
+    <Property Name="DateofBirth" Type="date" />
+    <Property Name="Gender" Type="varchar" MaxLength="255" />
+    <Property Name="Departement" Type="varchar" MaxLength="255" />
+    <Property Name="Address" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_ActiveCases' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_ActiveCases">
+    <Key>
+      <PropertyRef Name="ConfirmID" />
+    </Key>
+    <Property Name="ConfirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emp_id" Type="varchar" MaxLength="255" />
+    <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+    <Property Name="Gender" Type="varchar" MaxLength="255" />
+    <Property Name="Departement" Type="varchar" MaxLength="255" />
+    <Property Name="Confirmation_Date" Type="datetime" />
+    <Property Name="Status" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_BarChart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_BarChart">
+    <Key>
+      <PropertyRef Name="ConfirmID" />
+    </Key>
+    <Property Name="ConfirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emp_id" Type="varchar" MaxLength="255" />
+    <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+    <Property Name="Gender" Type="varchar" MaxLength="255" />
+    <Property Name="Departement" Type="varchar" MaxLength="255" />
+    <Property Name="DaMo" Type="nvarchar" MaxLength="61" />
+    <Property Name="MoYe" Type="nvarchar" MaxLength="61" />
+    <Property Name="Confirmation_Date" Type="date" />
+    <Property Name="Recovery_Date" Type="date" />
+    <Property Name="Death_Date" Type="date" />
+    <Property Name="Status" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_CFgender' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_CFgender">
+    <Key>
+      <PropertyRef Name="ConfirmID" />
+    </Key>
+    <Property Name="ConfirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+    <Property Name="Gender" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_CMgender' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_CMgender">
+    <Key>
+      <PropertyRef Name="ConfirmID" />
+    </Key>
+    <Property Name="ConfirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+    <Property Name="Gender" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_ConfirmEMP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_ConfirmEMP">
+    <Key>
+      <PropertyRef Name="Emp_ids" />
+      <PropertyRef Name="Emp_id" />
+    </Key>
+    <Property Name="Emp_ids" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emp_id" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="Gender" Type="varchar" MaxLength="255" />
+    <Property Name="Departement" Type="varchar" MaxLength="255" />
+    <Property Name="Address" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_DeathCases' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_DeathCases">
+    <Key>
+      <PropertyRef Name="ConfirmID" />
+    </Key>
+    <Property Name="ConfirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emp_id" Type="varchar" MaxLength="255" />
+    <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+    <Property Name="Gender" Type="varchar" MaxLength="255" />
+    <Property Name="Departement" Type="varchar" MaxLength="255" />
+    <Property Name="Confirmation_Date" Type="datetime" />
+    <Property Name="Death_Date" Type="datetime" />
+    <Property Name="Status" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_EmpFemale' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_EmpFemale">
+    <Key>
+      <PropertyRef Name="Emp_id" />
+    </Key>
+    <Property Name="Emp_id" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+    <Property Name="Gender" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_EmpMale' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_EmpMale">
+    <Key>
+      <PropertyRef Name="Emp_id" />
+    </Key>
+    <Property Name="Emp_id" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+    <Property Name="Gender" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_RecoveryCases' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_RecoveryCases">
+    <Key>
+      <PropertyRef Name="ConfirmID" />
+    </Key>
+    <Property Name="ConfirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emp_id" Type="varchar" MaxLength="255" />
+    <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+    <Property Name="Gender" Type="varchar" MaxLength="255" />
+    <Property Name="Departement" Type="varchar" MaxLength="255" />
+    <Property Name="Confirmation_Date" Type="datetime" />
+    <Property Name="Recovery_Date" Type="datetime" />
+    <Property Name="Status" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_statuemp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_statuemp">
+    <Key>
+      <PropertyRef Name="Emp_id" />
+    </Key>
+    <Property Name="username" Type="varchar" MaxLength="255" />
+    <Property Name="Emp_id" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+    <Property Name="Status" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_Uploadnew' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_Uploadnew">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Employee_Name" Type="varchar" MaxLength="255" />
+    <Property Name="DateofBirth" Type="date" />
+    <Property Name="Gender" Type="varchar" MaxLength="255" />
+    <Property Name="Departement" Type="varchar" MaxLength="255" />
+    <Property Name="Address" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_Uploadold' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_Uploadold">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Employee_Name" Type="varchar" MaxLength="255" />
+    <Property Name="DateofBirth" Type="date" />
+    <Property Name="Gender" Type="varchar" MaxLength="255" />
+    <Property Name="Departement" Type="varchar" MaxLength="255" />
+    <Property Name="Address" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityContainer Name="MRC19ModelStoreContainer">
+    <EntitySet Name="AccountUser" EntityType="Self.AccountUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CovidConfirmCases" EntityType="Self.CovidConfirmCases" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee_location" EntityType="Self.Employee_location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Temp_Employee" EntityType="Self.Temp_Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="V_ActiveCases" EntityType="Self.V_ActiveCases" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_ActiveCases].[ConfirmID] AS [ConfirmID], 
+    [V_ActiveCases].[Emp_id] AS [Emp_id], 
+    [V_ActiveCases].[Emp_name] AS [Emp_name], 
+    [V_ActiveCases].[Gender] AS [Gender], 
+    [V_ActiveCases].[Departement] AS [Departement], 
+    [V_ActiveCases].[Confirmation_Date] AS [Confirmation_Date], 
+    [V_ActiveCases].[Status] AS [Status]
+    FROM [dbo].[V_ActiveCases] AS [V_ActiveCases]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_BarChart" EntityType="Self.V_BarChart" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_BarChart].[ConfirmID] AS [ConfirmID], 
+    [V_BarChart].[Emp_id] AS [Emp_id], 
+    [V_BarChart].[Emp_name] AS [Emp_name], 
+    [V_BarChart].[Gender] AS [Gender], 
+    [V_BarChart].[Departement] AS [Departement], 
+    [V_BarChart].[DaMo] AS [DaMo], 
+    [V_BarChart].[MoYe] AS [MoYe], 
+    [V_BarChart].[Confirmation_Date] AS [Confirmation_Date], 
+    [V_BarChart].[Recovery_Date] AS [Recovery_Date], 
+    [V_BarChart].[Death_Date] AS [Death_Date], 
+    [V_BarChart].[Status] AS [Status]
+    FROM [dbo].[V_BarChart] AS [V_BarChart]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_CFgender" EntityType="Self.V_CFgender" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_CFgender].[ConfirmID] AS [ConfirmID], 
+    [V_CFgender].[Emp_name] AS [Emp_name], 
+    [V_CFgender].[Gender] AS [Gender]
+    FROM [dbo].[V_CFgender] AS [V_CFgender]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_CMgender" EntityType="Self.V_CMgender" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_CMgender].[ConfirmID] AS [ConfirmID], 
+    [V_CMgender].[Emp_name] AS [Emp_name], 
+    [V_CMgender].[Gender] AS [Gender]
+    FROM [dbo].[V_CMgender] AS [V_CMgender]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_ConfirmEMP" EntityType="Self.V_ConfirmEMP" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_ConfirmEMP].[Emp_ids] AS [Emp_ids], 
+    [V_ConfirmEMP].[Emp_id] AS [Emp_id], 
+    [V_ConfirmEMP].[Emp_name] AS [Emp_name], 
+    [V_ConfirmEMP].[DOB] AS [DOB], 
+    [V_ConfirmEMP].[Gender] AS [Gender], 
+    [V_ConfirmEMP].[Departement] AS [Departement], 
+    [V_ConfirmEMP].[Address] AS [Address]
+    FROM [dbo].[V_ConfirmEMP] AS [V_ConfirmEMP]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_DeathCases" EntityType="Self.V_DeathCases" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_DeathCases].[ConfirmID] AS [ConfirmID], 
+    [V_DeathCases].[Emp_id] AS [Emp_id], 
+    [V_DeathCases].[Emp_name] AS [Emp_name], 
+    [V_DeathCases].[Gender] AS [Gender], 
+    [V_DeathCases].[Departement] AS [Departement], 
+    [V_DeathCases].[Confirmation_Date] AS [Confirmation_Date], 
+    [V_DeathCases].[Death_Date] AS [Death_Date], 
+    [V_DeathCases].[Status] AS [Status]
+    FROM [dbo].[V_DeathCases] AS [V_DeathCases]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_EmpFemale" EntityType="Self.V_EmpFemale" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_EmpFemale].[Emp_id] AS [Emp_id], 
+    [V_EmpFemale].[Emp_name] AS [Emp_name], 
+    [V_EmpFemale].[Gender] AS [Gender]
+    FROM [dbo].[V_EmpFemale] AS [V_EmpFemale]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_EmpMale" EntityType="Self.V_EmpMale" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_EmpMale].[Emp_id] AS [Emp_id], 
+    [V_EmpMale].[Emp_name] AS [Emp_name], 
+    [V_EmpMale].[Gender] AS [Gender]
+    FROM [dbo].[V_EmpMale] AS [V_EmpMale]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_RecoveryCases" EntityType="Self.V_RecoveryCases" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_RecoveryCases].[ConfirmID] AS [ConfirmID], 
+    [V_RecoveryCases].[Emp_id] AS [Emp_id], 
+    [V_RecoveryCases].[Emp_name] AS [Emp_name], 
+    [V_RecoveryCases].[Gender] AS [Gender], 
+    [V_RecoveryCases].[Departement] AS [Departement], 
+    [V_RecoveryCases].[Confirmation_Date] AS [Confirmation_Date], 
+    [V_RecoveryCases].[Recovery_Date] AS [Recovery_Date], 
+    [V_RecoveryCases].[Status] AS [Status]
+    FROM [dbo].[V_RecoveryCases] AS [V_RecoveryCases]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_statuemp" EntityType="Self.V_statuemp" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_statuemp].[username] AS [username], 
+    [V_statuemp].[Emp_id] AS [Emp_id], 
+    [V_statuemp].[Emp_name] AS [Emp_name], 
+    [V_statuemp].[Status] AS [Status]
+    FROM [dbo].[V_statuemp] AS [V_statuemp]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_Uploadnew" EntityType="Self.V_Uploadnew" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_Uploadnew].[EmployeeID] AS [EmployeeID], 
+    [V_Uploadnew].[Employee_Name] AS [Employee_Name], 
+    [V_Uploadnew].[DateofBirth] AS [DateofBirth], 
+    [V_Uploadnew].[Gender] AS [Gender], 
+    [V_Uploadnew].[Departement] AS [Departement], 
+    [V_Uploadnew].[Address] AS [Address]
+    FROM [dbo].[V_Uploadnew] AS [V_Uploadnew]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_Uploadold" EntityType="Self.V_Uploadold" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_Uploadold].[EmployeeID] AS [EmployeeID], 
+    [V_Uploadold].[Employee_Name] AS [Employee_Name], 
+    [V_Uploadold].[DateofBirth] AS [DateofBirth], 
+    [V_Uploadold].[Gender] AS [Gender], 
+    [V_Uploadold].[Departement] AS [Departement], 
+    [V_Uploadold].[Address] AS [Address]
+    FROM [dbo].[V_Uploadold] AS [V_Uploadold]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,397 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<script src="~/Content/js/admjs/jquery-3.5.1.js"></script>
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<script src="~/Content/js/Chart/accessibility.js"></script>
+<script src="~/Content/js/Chart/export-data.js"></script>
+<script src="~/Content/js/Chart/exporting.js"></script>
+<script src="~/Content/js/Chart/highcharts.js"></script>
+<script src="~/Content/js/Chart/selectFilter.min.js"></script>
+
+<div class="content-wrapper">
+    @if ((string)Session["User_type"] == "Admin")
+    {
+
+
+        <div class="content-header">
+
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-sm-12">
+                        <h1 class="m-0"><strong>Dashboard</strong></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>@ViewBag.CountConfirm</h3>
+
+                                <p><strong>Confirmation Cases</strong></p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-checkmark-circled"></i>
+                            </div>
+                            <a href="@Url.Action("ConfirmationCases", "Home")" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-gradient-orange">
+                            <div class="inner text-white">
+                                <h3>@ViewBag.CountActive</h3>
+
+                                <p><strong>Active Cases</strong></p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-clipboard"></i>
+                            </div>
+                            <a href="@Url.Action("ActiveCases", "Home")" class="small-box-footer text-white"> More info <i class="fa fa-arrow-circle-right text-white"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>@ViewBag.CountRecovery</h3>
+
+                                <p><strong>Recovery Cases</strong></p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-medkit"></i>
+                            </div>
+                            <a href="@Url.Action("RecoveryCases", "Home")" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>@ViewBag.CountDeath</h3>
+
+                                <p><strong>Death Cases</strong></p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-alert-circled"></i>
+                            </div>
+                            <a href="@Url.Action("DeathCases", "Home")" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <section class="col-lg-4 connectedSortable">
+                    <div class="card" style="width:400px;">
+                        <div class="card-header bg-gradient-navy">
+
+                            <h3 class="card-title"><i class="fa fa-pie-chart"> </i> Covid-19 Cases by Gender</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="chart-responsive">
+                                        <div id="GenderChart" style="min-width: 370px; height: 300px; max-width: 1200px; margin: 0 auto "></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer bg-light p-0">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-mars"></i> Male
+                                        <span class="float-right text-gray-dark">
+
+                                            Total: @ViewBag.CountMG
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-venus"></i> Female
+                                        <span class="float-right text-gray-dark">
+
+                                            Total: @ViewBag.CountFG
+                                        </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!-- /.footer -->
+                    </div>
+
+                    <div class="card" style="width:400px;">
+                        <div class="card-header bg-gradient-navy">
+
+                            <h3 class="card-title"><i class="fa fa-group"> </i> Active Cases from Department</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped custom-table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Department </th>
+                                            <th style="text-align:center;">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in ViewBag.DepartActive)
+                                        {
+                                            <tr>
+                                                <td>@item.Departement</td>
+                                                <td style="text-align:center;">@item.count</td>
+
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <!-- /.footer -->
+                    </div>
+
+                </section>
+
+
+                <section class="col-lg-8 connectedSortable">
+
+                    <div class="card" style="width:820px;">
+                        <div class="card-header bg-gradient-navy">
+
+                            <h3 class="card-title"><i class="fa fa-bar-chart"> </i> Daily Covid-19 Cases</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="chart-responsive">
+                                        <div id="BarChartD" style="min-width: 780px; height: 300px; max-width: 800px; margin: 0 auto"></div>
+                                    </div>
+                                    <!-- ./chart-responsive -->
+                                </div>
+
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.card-body -->
+                        <!-- /.footer -->
+                    </div>
+
+                </section>
+
+
+
+                <section class="col-lg-8 connectedSortable">
+
+                    <div class="card" style="width:820px;">
+                        <div class="card-header bg-gradient-navy">
+
+                            <h3 class="card-title"><i class="fa fa-bar-chart"> </i> Monthly Covid-19 Cases</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="chart-responsive">
+                                        <div id="BarChartM" style="min-width: 780px; height: 300px; max-width: 800px; margin: 0 auto"></div>
+                                    </div>
+                                    <!-- ./chart-responsive -->
+                                </div>
+
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.card-body -->
+                        <!-- /.footer -->
+                    </div>
+
+                </section>
+
+
+
+            </div>
+
+        </section>
+    }
+    else
+    {
+
+
+        if ((string)Session["Status"] == "Death" || (string)Session["Status"] == "Active")
+        {
+            <div class="content">
+                <h1 style="color:red; padding-top:300px; text-align:center;">YOU NOT ABLE TO WORK</h1>
+            </div>
+
+        }
+        else
+        {
+            <div class="content">
+                <h1 style="color:green; padding-top:300px; text-align:center;">YOU ABLE TO WORK</h1>
+            </div>
+
+        }
+
+
+    }
+</div>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $.getJSON("/Home/GetData", function (data) {
+            var DaMo = []
+            var jsondata = []
+            for (var i = 0; i < data.length; i++) {
+                DaMo.push(data[i].DaMo);
+                jsondata.push([data[i].DaMo, data[i].count]);
+            }
+
+            Highcharts.chart('BarChartD', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Daily Covid-19 Cases'
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: DaMo
+                },
+                yAxis: {
+                    title: {
+                        text: 'Total Confirmation Cases'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Confirmation Cases',
+                    data: jsondata
+                }]
+            });
+        });
+    });
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $.getJSON("/Home/MonthlyChart", function (data) {
+            var MoYe = []
+            var jsondata = []
+            for (var i = 0; i < data.length; i++) {
+                MoYe.push(data[i].MoYe);
+                jsondata.push([data[i].MoYe, data[i].count]);
+            }
+
+            Highcharts.chart('BarChartM', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Monthly Covid-19 Cases'
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: MoYe
+                },
+                yAxis: {
+                    title: {
+                        text: 'Total Confirmation Cases'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Confirmation Cases',
+                    data: jsondata
+                }]
+            });
+        });
+    });
+
+
+</script>
+
+

@@ -1,0 +1,815 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MRC19Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountUser">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="User_type" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="CovidConfirmCases">
+          <Key>
+            <PropertyRef Name="ConfirmID" />
+          </Key>
+          <Property Name="ConfirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_id" Type="varchar" MaxLength="255" />
+          <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+          <Property Name="Gender" Type="varchar" MaxLength="255" />
+          <Property Name="Departement" Type="varchar" MaxLength="255" />
+          <Property Name="Confirmation_Date" Type="date" />
+          <Property Name="Recovery_Date" Type="date" />
+          <Property Name="Death_Date" Type="date" />
+          <Property Name="Status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartID" />
+          </Key>
+          <Property Name="DepartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department_Name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Emp_id" />
+          </Key>
+          <Property Name="Emp_ids" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="Gender" Type="varchar" MaxLength="255" />
+          <Property Name="Departement" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Employee_location">
+          <Key>
+            <PropertyRef Name="ID_EL" />
+          </Key>
+          <Property Name="ID_EL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_id" Type="varchar" MaxLength="255" />
+          <Property Name="Date_AddLocation" Type="date" />
+          <Property Name="Days_Isolation" Type="varchar" MaxLength="255" />
+          <Property Name="Current_position" Type="varchar" MaxLength="255" />
+          <Property Name="titik_kordinat" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Temp_Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Employee_Name" Type="varchar" MaxLength="255" />
+          <Property Name="DateofBirth" Type="date" />
+          <Property Name="Gender" Type="varchar" MaxLength="255" />
+          <Property Name="Departement" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_ActiveCases' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_ActiveCases">
+          <Key>
+            <PropertyRef Name="ConfirmID" />
+          </Key>
+          <Property Name="ConfirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_id" Type="varchar" MaxLength="255" />
+          <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+          <Property Name="Gender" Type="varchar" MaxLength="255" />
+          <Property Name="Departement" Type="varchar" MaxLength="255" />
+          <Property Name="Confirmation_Date" Type="datetime" />
+          <Property Name="Status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_BarChart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_BarChart">
+          <Key>
+            <PropertyRef Name="ConfirmID" />
+          </Key>
+          <Property Name="ConfirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_id" Type="varchar" MaxLength="255" />
+          <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+          <Property Name="Gender" Type="varchar" MaxLength="255" />
+          <Property Name="Departement" Type="varchar" MaxLength="255" />
+          <Property Name="DaMo" Type="nvarchar" MaxLength="61" />
+          <Property Name="MoYe" Type="nvarchar" MaxLength="61" />
+          <Property Name="Confirmation_Date" Type="date" />
+          <Property Name="Recovery_Date" Type="date" />
+          <Property Name="Death_Date" Type="date" />
+          <Property Name="Status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_CFgender' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_CFgender">
+          <Key>
+            <PropertyRef Name="ConfirmID" />
+          </Key>
+          <Property Name="ConfirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+          <Property Name="Gender" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_CMgender' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_CMgender">
+          <Key>
+            <PropertyRef Name="ConfirmID" />
+          </Key>
+          <Property Name="ConfirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+          <Property Name="Gender" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_ConfirmEMP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_ConfirmEMP">
+          <Key>
+            <PropertyRef Name="Emp_ids" />
+            <PropertyRef Name="Emp_id" />
+          </Key>
+          <Property Name="Emp_ids" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="Gender" Type="varchar" MaxLength="255" />
+          <Property Name="Departement" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_DeathCases' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_DeathCases">
+          <Key>
+            <PropertyRef Name="ConfirmID" />
+          </Key>
+          <Property Name="ConfirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_id" Type="varchar" MaxLength="255" />
+          <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+          <Property Name="Gender" Type="varchar" MaxLength="255" />
+          <Property Name="Departement" Type="varchar" MaxLength="255" />
+          <Property Name="Confirmation_Date" Type="datetime" />
+          <Property Name="Death_Date" Type="datetime" />
+          <Property Name="Status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_EmpFemale' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_EmpFemale">
+          <Key>
+            <PropertyRef Name="Emp_id" />
+          </Key>
+          <Property Name="Emp_id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+          <Property Name="Gender" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_EmpMale' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_EmpMale">
+          <Key>
+            <PropertyRef Name="Emp_id" />
+          </Key>
+          <Property Name="Emp_id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+          <Property Name="Gender" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_RecoveryCases' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_RecoveryCases">
+          <Key>
+            <PropertyRef Name="ConfirmID" />
+          </Key>
+          <Property Name="ConfirmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_id" Type="varchar" MaxLength="255" />
+          <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+          <Property Name="Gender" Type="varchar" MaxLength="255" />
+          <Property Name="Departement" Type="varchar" MaxLength="255" />
+          <Property Name="Confirmation_Date" Type="datetime" />
+          <Property Name="Recovery_Date" Type="datetime" />
+          <Property Name="Status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_statuemp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_statuemp">
+          <Key>
+            <PropertyRef Name="Emp_id" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="255" />
+          <Property Name="Emp_id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Emp_name" Type="varchar" MaxLength="255" />
+          <Property Name="Status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_Uploadnew' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_Uploadnew">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Employee_Name" Type="varchar" MaxLength="255" />
+          <Property Name="DateofBirth" Type="date" />
+          <Property Name="Gender" Type="varchar" MaxLength="255" />
+          <Property Name="Departement" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MRC19.dbo.V_Uploadold' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_Uploadold">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Employee_Name" Type="varchar" MaxLength="255" />
+          <Property Name="DateofBirth" Type="date" />
+          <Property Name="Gender" Type="varchar" MaxLength="255" />
+          <Property Name="Departement" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityContainer Name="MRC19ModelStoreContainer">
+          <EntitySet Name="AccountUser" EntityType="Self.AccountUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CovidConfirmCases" EntityType="Self.CovidConfirmCases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_location" EntityType="Self.Employee_location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Temp_Employee" EntityType="Self.Temp_Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_ActiveCases" EntityType="Self.V_ActiveCases" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_ActiveCases].[ConfirmID] AS [ConfirmID], 
+    [V_ActiveCases].[Emp_id] AS [Emp_id], 
+    [V_ActiveCases].[Emp_name] AS [Emp_name], 
+    [V_ActiveCases].[Gender] AS [Gender], 
+    [V_ActiveCases].[Departement] AS [Departement], 
+    [V_ActiveCases].[Confirmation_Date] AS [Confirmation_Date], 
+    [V_ActiveCases].[Status] AS [Status]
+    FROM [dbo].[V_ActiveCases] AS [V_ActiveCases]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_BarChart" EntityType="Self.V_BarChart" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_BarChart].[ConfirmID] AS [ConfirmID], 
+    [V_BarChart].[Emp_id] AS [Emp_id], 
+    [V_BarChart].[Emp_name] AS [Emp_name], 
+    [V_BarChart].[Gender] AS [Gender], 
+    [V_BarChart].[Departement] AS [Departement], 
+    [V_BarChart].[DaMo] AS [DaMo], 
+    [V_BarChart].[MoYe] AS [MoYe], 
+    [V_BarChart].[Confirmation_Date] AS [Confirmation_Date], 
+    [V_BarChart].[Recovery_Date] AS [Recovery_Date], 
+    [V_BarChart].[Death_Date] AS [Death_Date], 
+    [V_BarChart].[Status] AS [Status]
+    FROM [dbo].[V_BarChart] AS [V_BarChart]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_CFgender" EntityType="Self.V_CFgender" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_CFgender].[ConfirmID] AS [ConfirmID], 
+    [V_CFgender].[Emp_name] AS [Emp_name], 
+    [V_CFgender].[Gender] AS [Gender]
+    FROM [dbo].[V_CFgender] AS [V_CFgender]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_CMgender" EntityType="Self.V_CMgender" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_CMgender].[ConfirmID] AS [ConfirmID], 
+    [V_CMgender].[Emp_name] AS [Emp_name], 
+    [V_CMgender].[Gender] AS [Gender]
+    FROM [dbo].[V_CMgender] AS [V_CMgender]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_ConfirmEMP" EntityType="Self.V_ConfirmEMP" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_ConfirmEMP].[Emp_ids] AS [Emp_ids], 
+    [V_ConfirmEMP].[Emp_id] AS [Emp_id], 
+    [V_ConfirmEMP].[Emp_name] AS [Emp_name], 
+    [V_ConfirmEMP].[DOB] AS [DOB], 
+    [V_ConfirmEMP].[Gender] AS [Gender], 
+    [V_ConfirmEMP].[Departement] AS [Departement], 
+    [V_ConfirmEMP].[Address] AS [Address]
+    FROM [dbo].[V_ConfirmEMP] AS [V_ConfirmEMP]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_DeathCases" EntityType="Self.V_DeathCases" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_DeathCases].[ConfirmID] AS [ConfirmID], 
+    [V_DeathCases].[Emp_id] AS [Emp_id], 
+    [V_DeathCases].[Emp_name] AS [Emp_name], 
+    [V_DeathCases].[Gender] AS [Gender], 
+    [V_DeathCases].[Departement] AS [Departement], 
+    [V_DeathCases].[Confirmation_Date] AS [Confirmation_Date], 
+    [V_DeathCases].[Death_Date] AS [Death_Date], 
+    [V_DeathCases].[Status] AS [Status]
+    FROM [dbo].[V_DeathCases] AS [V_DeathCases]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_EmpFemale" EntityType="Self.V_EmpFemale" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_EmpFemale].[Emp_id] AS [Emp_id], 
+    [V_EmpFemale].[Emp_name] AS [Emp_name], 
+    [V_EmpFemale].[Gender] AS [Gender]
+    FROM [dbo].[V_EmpFemale] AS [V_EmpFemale]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_EmpMale" EntityType="Self.V_EmpMale" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_EmpMale].[Emp_id] AS [Emp_id], 
+    [V_EmpMale].[Emp_name] AS [Emp_name], 
+    [V_EmpMale].[Gender] AS [Gender]
+    FROM [dbo].[V_EmpMale] AS [V_EmpMale]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_RecoveryCases" EntityType="Self.V_RecoveryCases" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_RecoveryCases].[ConfirmID] AS [ConfirmID], 
+    [V_RecoveryCases].[Emp_id] AS [Emp_id], 
+    [V_RecoveryCases].[Emp_name] AS [Emp_name], 
+    [V_RecoveryCases].[Gender] AS [Gender], 
+    [V_RecoveryCases].[Departement] AS [Departement], 
+    [V_RecoveryCases].[Confirmation_Date] AS [Confirmation_Date], 
+    [V_RecoveryCases].[Recovery_Date] AS [Recovery_Date], 
+    [V_RecoveryCases].[Status] AS [Status]
+    FROM [dbo].[V_RecoveryCases] AS [V_RecoveryCases]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_statuemp" EntityType="Self.V_statuemp" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_statuemp].[username] AS [username], 
+    [V_statuemp].[Emp_id] AS [Emp_id], 
+    [V_statuemp].[Emp_name] AS [Emp_name], 
+    [V_statuemp].[Status] AS [Status]
+    FROM [dbo].[V_statuemp] AS [V_statuemp]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_Uploadnew" EntityType="Self.V_Uploadnew" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_Uploadnew].[EmployeeID] AS [EmployeeID], 
+    [V_Uploadnew].[Employee_Name] AS [Employee_Name], 
+    [V_Uploadnew].[DateofBirth] AS [DateofBirth], 
+    [V_Uploadnew].[Gender] AS [Gender], 
+    [V_Uploadnew].[Departement] AS [Departement], 
+    [V_Uploadnew].[Address] AS [Address]
+    FROM [dbo].[V_Uploadnew] AS [V_Uploadnew]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_Uploadold" EntityType="Self.V_Uploadold" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_Uploadold].[EmployeeID] AS [EmployeeID], 
+    [V_Uploadold].[Employee_Name] AS [Employee_Name], 
+    [V_Uploadold].[DateofBirth] AS [DateofBirth], 
+    [V_Uploadold].[Gender] AS [Gender], 
+    [V_Uploadold].[Departement] AS [Departement], 
+    [V_Uploadold].[Address] AS [Address]
+    FROM [dbo].[V_Uploadold] AS [V_Uploadold]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MRC19Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MRC19Entities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Temp_Employee" EntityType="MRC19Model.Temp_Employee" />
+          <EntitySet Name="Employees" EntityType="MRC19Model.Employee" />
+          <EntitySet Name="V_ActiveCases" EntityType="MRC19Model.V_ActiveCases" />
+          <EntitySet Name="V_DeathCases" EntityType="MRC19Model.V_DeathCases" />
+          <EntitySet Name="V_RecoveryCases" EntityType="MRC19Model.V_RecoveryCases" />
+          <EntitySet Name="V_ConfirmEMP" EntityType="MRC19Model.V_ConfirmEMP" />
+          <EntitySet Name="V_CFgender" EntityType="MRC19Model.V_CFgender" />
+          <EntitySet Name="V_CMgender" EntityType="MRC19Model.V_CMgender" />
+          <EntitySet Name="CovidConfirmCases" EntityType="MRC19Model.CovidConfirmCas" />
+          <EntitySet Name="V_BarChart" EntityType="MRC19Model.V_BarChart" />
+          <EntitySet Name="V_EmpFemale" EntityType="MRC19Model.V_EmpFemale" />
+          <EntitySet Name="V_EmpMale" EntityType="MRC19Model.V_EmpMale" />
+          <EntitySet Name="V_Uploadnew" EntityType="MRC19Model.V_Uploadnew" />
+          <EntitySet Name="V_Uploadold" EntityType="MRC19Model.V_Uploadold" />
+          <EntitySet Name="AccountUsers" EntityType="MRC19Model.AccountUser" />
+          <EntitySet Name="V_statuemp" EntityType="MRC19Model.V_statuemp" />
+          <EntitySet Name="Departments" EntityType="MRC19Model.Department" />
+          <EntitySet Name="Employee_location" EntityType="MRC19Model.Employee_location" />
+        </EntityContainer>
+        <EntityType Name="Temp_Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Employee_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DateofBirth" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Emp_id" />
+          </Key>
+          <Property Name="Emp_ids" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_ActiveCases">
+          <Key>
+            <PropertyRef Name="ConfirmID" />
+          </Key>
+          <Property Name="ConfirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Confirmation_Date" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_DeathCases">
+          <Key>
+            <PropertyRef Name="ConfirmID" />
+          </Key>
+          <Property Name="ConfirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Confirmation_Date" Type="DateTime" Precision="3" />
+          <Property Name="Death_Date" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_RecoveryCases">
+          <Key>
+            <PropertyRef Name="ConfirmID" />
+          </Key>
+          <Property Name="ConfirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Confirmation_Date" Type="DateTime" Precision="3" />
+          <Property Name="Recovery_Date" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_ConfirmEMP">
+          <Key>
+            <PropertyRef Name="Emp_ids" />
+            <PropertyRef Name="Emp_id" />
+          </Key>
+          <Property Name="Emp_ids" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_CFgender">
+          <Key>
+            <PropertyRef Name="ConfirmID" />
+          </Key>
+          <Property Name="ConfirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_CMgender">
+          <Key>
+            <PropertyRef Name="ConfirmID" />
+          </Key>
+          <Property Name="ConfirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CovidConfirmCas">
+          <Key>
+            <PropertyRef Name="ConfirmID" />
+          </Key>
+          <Property Name="ConfirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Confirmation_Date" Type="DateTime" Precision="0" />
+          <Property Name="Recovery_Date" Type="DateTime" Precision="0" />
+          <Property Name="Death_Date" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_BarChart">
+          <Key>
+            <PropertyRef Name="ConfirmID" />
+          </Key>
+          <Property Name="ConfirmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DaMo" Type="String" MaxLength="61" FixedLength="false" Unicode="true" />
+          <Property Name="MoYe" Type="String" MaxLength="61" FixedLength="false" Unicode="true" />
+          <Property Name="Confirmation_Date" Type="DateTime" Precision="0" />
+          <Property Name="Recovery_Date" Type="DateTime" Precision="0" />
+          <Property Name="Death_Date" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_EmpFemale">
+          <Key>
+            <PropertyRef Name="Emp_id" />
+          </Key>
+          <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_EmpMale">
+          <Key>
+            <PropertyRef Name="Emp_id" />
+          </Key>
+          <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_Uploadnew">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Employee_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DateofBirth" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_Uploadold">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Employee_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DateofBirth" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Departement" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AccountUser">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="User_type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_statuemp">
+          <Key>
+            <PropertyRef Name="Emp_id" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartID" />
+          </Key>
+          <Property Name="DepartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Employee_location">
+          <Key>
+            <PropertyRef Name="ID_EL" />
+          </Key>
+          <Property Name="ID_EL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Date_AddLocation" Type="DateTime" Precision="0" />
+          <Property Name="Days_Isolation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Current_position" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="titik_kordinat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MRC19ModelStoreContainer" CdmEntityContainer="MRC19Entities" >
+          <EntitySetMapping Name="Temp_Employee">
+            <EntityTypeMapping TypeName="MRC19Model.Temp_Employee">
+              <MappingFragment StoreEntitySet="Temp_Employee">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Departement" ColumnName="Departement" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+                <ScalarProperty Name="Employee_Name" ColumnName="Employee_Name" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="MRC19Model.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Departement" ColumnName="Departement" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+                <ScalarProperty Name="Emp_ids" ColumnName="Emp_ids" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_ActiveCases">
+            <EntityTypeMapping TypeName="MRC19Model.V_ActiveCases">
+              <MappingFragment StoreEntitySet="V_ActiveCases">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Confirmation_Date" ColumnName="Confirmation_Date" />
+                <ScalarProperty Name="Departement" ColumnName="Departement" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+                <ScalarProperty Name="ConfirmID" ColumnName="ConfirmID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_DeathCases">
+            <EntityTypeMapping TypeName="MRC19Model.V_DeathCases">
+              <MappingFragment StoreEntitySet="V_DeathCases">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Death_Date" ColumnName="Death_Date" />
+                <ScalarProperty Name="Confirmation_Date" ColumnName="Confirmation_Date" />
+                <ScalarProperty Name="Departement" ColumnName="Departement" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+                <ScalarProperty Name="ConfirmID" ColumnName="ConfirmID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_RecoveryCases">
+            <EntityTypeMapping TypeName="MRC19Model.V_RecoveryCases">
+              <MappingFragment StoreEntitySet="V_RecoveryCases">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Recovery_Date" ColumnName="Recovery_Date" />
+                <ScalarProperty Name="Confirmation_Date" ColumnName="Confirmation_Date" />
+                <ScalarProperty Name="Departement" ColumnName="Departement" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+                <ScalarProperty Name="ConfirmID" ColumnName="ConfirmID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_ConfirmEMP">
+            <EntityTypeMapping TypeName="MRC19Model.V_ConfirmEMP">
+              <MappingFragment StoreEntitySet="V_ConfirmEMP">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Departement" ColumnName="Departement" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+                <ScalarProperty Name="Emp_ids" ColumnName="Emp_ids" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_CFgender">
+            <EntityTypeMapping TypeName="MRC19Model.V_CFgender">
+              <MappingFragment StoreEntitySet="V_CFgender">
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+                <ScalarProperty Name="ConfirmID" ColumnName="ConfirmID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_CMgender">
+            <EntityTypeMapping TypeName="MRC19Model.V_CMgender">
+              <MappingFragment StoreEntitySet="V_CMgender">
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+                <ScalarProperty Name="ConfirmID" ColumnName="ConfirmID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CovidConfirmCases">
+            <EntityTypeMapping TypeName="MRC19Model.CovidConfirmCas">
+              <MappingFragment StoreEntitySet="CovidConfirmCases">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Death_Date" ColumnName="Death_Date" />
+                <ScalarProperty Name="Recovery_Date" ColumnName="Recovery_Date" />
+                <ScalarProperty Name="Confirmation_Date" ColumnName="Confirmation_Date" />
+                <ScalarProperty Name="Departement" ColumnName="Departement" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+                <ScalarProperty Name="ConfirmID" ColumnName="ConfirmID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_BarChart">
+            <EntityTypeMapping TypeName="MRC19Model.V_BarChart">
+              <MappingFragment StoreEntitySet="V_BarChart">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Death_Date" ColumnName="Death_Date" />
+                <ScalarProperty Name="Recovery_Date" ColumnName="Recovery_Date" />
+                <ScalarProperty Name="Confirmation_Date" ColumnName="Confirmation_Date" />
+                <ScalarProperty Name="MoYe" ColumnName="MoYe" />
+                <ScalarProperty Name="DaMo" ColumnName="DaMo" />
+                <ScalarProperty Name="Departement" ColumnName="Departement" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+                <ScalarProperty Name="ConfirmID" ColumnName="ConfirmID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_EmpFemale">
+            <EntityTypeMapping TypeName="MRC19Model.V_EmpFemale">
+              <MappingFragment StoreEntitySet="V_EmpFemale">
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_EmpMale">
+            <EntityTypeMapping TypeName="MRC19Model.V_EmpMale">
+              <MappingFragment StoreEntitySet="V_EmpMale">
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_Uploadnew">
+            <EntityTypeMapping TypeName="MRC19Model.V_Uploadnew">
+              <MappingFragment StoreEntitySet="V_Uploadnew">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Departement" ColumnName="Departement" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+                <ScalarProperty Name="Employee_Name" ColumnName="Employee_Name" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_Uploadold">
+            <EntityTypeMapping TypeName="MRC19Model.V_Uploadold">
+              <MappingFragment StoreEntitySet="V_Uploadold">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Departement" ColumnName="Departement" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+                <ScalarProperty Name="Employee_Name" ColumnName="Employee_Name" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountUsers">
+            <EntityTypeMapping TypeName="MRC19Model.AccountUser">
+              <MappingFragment StoreEntitySet="AccountUser">
+                <ScalarProperty Name="User_type" ColumnName="User_type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_statuemp">
+            <EntityTypeMapping TypeName="MRC19Model.V_statuemp">
+              <MappingFragment StoreEntitySet="V_statuemp">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Emp_name" ColumnName="Emp_name" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="MRC19Model.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Department_Name" ColumnName="Department_Name" />
+                <ScalarProperty Name="DepartID" ColumnName="DepartID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_location">
+            <EntityTypeMapping TypeName="MRC19Model.Employee_location">
+              <MappingFragment StoreEntitySet="Employee_location">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="titik_kordinat" ColumnName="titik_kordinat" />
+                <ScalarProperty Name="Current_position" ColumnName="Current_position" />
+                <ScalarProperty Name="Days_Isolation" ColumnName="Days_Isolation" />
+                <ScalarProperty Name="Date_AddLocation" ColumnName="Date_AddLocation" />
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+                <ScalarProperty Name="ID_EL" ColumnName="ID_EL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
